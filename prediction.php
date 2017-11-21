@@ -15,41 +15,24 @@
 <body>
 	<?php
 	  require 'navbar.php';
+
 	?>
 
-	<main role="main">
-		<div class="jumbotron">
-			<div class="container">
-          <h1 class="display-3">今晚吃什么</h1>
-          <p>根据食堂距离、食品状态、历史满意度等为您推荐</p>
-          <p><a class="btn btn-primary btn-lg" href="prediction.php" role="button">去试试看  &raquo;</a></p>
-      </div>
+	<main role="main" class="container">
+    <h3>(*´▽｀)ノノ今天状态如何呢？</h3>
+    <div class="btn-group-vertical">
+      <!--
+      <button type="button" class="btn btn-outline-secondary" id="btn10" onclick="selectBtn(btn10)">A.饿了~超想吃饭(*❦ω❦)</button>
+      <button type="button" class="btn btn-outline-secondary" id="btn11" onclick="selectBtn(btn11)">B.有点饿，不是很想吃(╥╯^╰╥)</button>
+      <button type="button" class="btn btn-outline-secondary" id="btn12" onclick="selectBtn(btn12)">C.不饿，但是好馋呀(¯﹃¯)</button>
+      <button type="button" class="btn btn-outline-secondary" id="btn13" onclick="selectBtn(btn13)">D.不饿，也完全不想吃(灬°ω°灬)</button>
+    -->
     </div>
-
-		<div class="container">
-		<!-- Example row of columns -->
-			<div class="row">
-				<div class="col-md-4">
-					<h2>食堂距离</h2>
-					<p>起点为宿舍</p>
-					</br>
-					<p><a class="btn btn-secondary" href="model.php" role="button">View details</a></p>
-				</div>
-				<div class="col-md-4">
-					<h2>等待时长</h2>
-					<p>不同种类食品的制作时间不同</p>
-					</br>
-					<p><a class="btn btn-secondary" href="model.php" role="button">View details</a></p>
-				</div>
-				<div class="col-md-4">
-					<h2>满意度</h2>
-					<p>自身经验判断不同状态对食物的需求程度</br>与不同食堂食物带来的主观感受</p>
-					<p><a class="btn btn-secondary" href="model.php" role="button">View details</a></p>
-				</div>
-			</div>
-			<hr>
-		</div> <!-- /container -->
 	</main>
+
+  <script type ="text/javascript">
+
+  </script>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>

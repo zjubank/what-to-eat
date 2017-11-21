@@ -17,38 +17,8 @@
 	  require 'navbar.php';
 	?>
 
-	<main role="main">
-		<div class="jumbotron">
-			<div class="container">
-          <h1 class="display-3">今晚吃什么</h1>
-          <p>根据食堂距离、食品状态、历史满意度等为您推荐</p>
-          <p><a class="btn btn-primary btn-lg" href="prediction.php" role="button">去试试看  &raquo;</a></p>
-      </div>
-    </div>
+	<main role="main" class="container">
 
-		<div class="container">
-		<!-- Example row of columns -->
-			<div class="row">
-				<div class="col-md-4">
-					<h2>食堂距离</h2>
-					<p>起点为宿舍</p>
-					</br>
-					<p><a class="btn btn-secondary" href="model.php" role="button">View details</a></p>
-				</div>
-				<div class="col-md-4">
-					<h2>等待时长</h2>
-					<p>不同种类食品的制作时间不同</p>
-					</br>
-					<p><a class="btn btn-secondary" href="model.php" role="button">View details</a></p>
-				</div>
-				<div class="col-md-4">
-					<h2>满意度</h2>
-					<p>自身经验判断不同状态对食物的需求程度</br>与不同食堂食物带来的主观感受</p>
-					<p><a class="btn btn-secondary" href="model.php" role="button">View details</a></p>
-				</div>
-			</div>
-			<hr>
-		</div> <!-- /container -->
 	</main>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
