@@ -21,17 +21,41 @@
 	<main role="main" class="container">
     <h3>(*´▽｀)ノノ今天状态如何呢？</h3>
     <div class="btn-group-vertical">
-      <!--
-      <button type="button" class="btn btn-outline-secondary" id="btn10" onclick="selectBtn(btn10)">A.饿了~超想吃饭(*❦ω❦)</button>
-      <button type="button" class="btn btn-outline-secondary" id="btn11" onclick="selectBtn(btn11)">B.有点饿，不是很想吃(╥╯^╰╥)</button>
-      <button type="button" class="btn btn-outline-secondary" id="btn12" onclick="selectBtn(btn12)">C.不饿，但是好馋呀(¯﹃¯)</button>
-      <button type="button" class="btn btn-outline-secondary" id="btn13" onclick="selectBtn(btn13)">D.不饿，也完全不想吃(灬°ω°灬)</button>
-    -->
+      <button type="button" class="btn btn-outline-secondary" id="btnQ0A0">A.饿了~超想吃饭(*❦ω❦)</button>
+      <button type="button" class="btn btn-outline-secondary" id="btnQ0A1">B.有点饿，不是很想吃(╥╯^╰╥)</button>
+      <button type="button" class="btn btn-outline-secondary" id="btnQ0A2">C.不饿，但是好馋呀(¯﹃¯)</button>
+      <button type="button" class="btn btn-outline-secondary" id="btnQ0A3">D.不饿，也完全不想吃(灬°ω°灬)</button>
     </div>
 	</main>
 
   <script type ="text/javascript">
-
+      function btnSeletcted(btnGrp,btnNum){
+        btnId="btnQ"+btnGrp+"A"+btnNum;
+        for(var i=0; i<4; i++) {
+          if(i==btnNum) {
+            document.getElementById(btnId).classList.remove("btn-outline-secondary");
+            document.getElementById(btnId).classList.add("btn-success");
+          }
+          else {
+            unSelectBtnId="btnQ"+btnGrp+"A"+i;
+            document.getElementById(unSelectBtnId).classList.remove("btn-success");
+            document.getElementById(unSelectBtnId).classList.add("btn-outline-secondary");
+          }
+        }
+      }
+      
+      document.getElementById("btnQ0A0").addEventListener("click",function() {
+        btnSeletcted(0,0);
+      });
+      document.getElementById("btnQ0A1").addEventListener("click",function() {
+        btnSeletcted(0,1);
+      });
+      document.getElementById("btnQ0A2").addEventListener("click",function() {
+        btnSeletcted(0,2);
+      });
+      document.getElementById("btnQ0A3").addEventListener("click",function() {
+        btnSeletcted(0,3);
+      });
   </script>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
