@@ -17,7 +17,22 @@ body {
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  margin-top: 0;
+  margin-top: 1;
   margin-bottom: 0;
   line-height: 3rem;
+}
+
+.question {
+  text-align: center;
+}
+
+.btn-group-vertical {
+  padding-top: 1rem;
+}
+
+.btn-prdct {
+  position: relative;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
 }
