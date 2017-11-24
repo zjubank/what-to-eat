@@ -30,7 +30,7 @@
 			localStorage.clear();
 			location.reload();
 		}
-		
+
 		function fillList() {
 			var foodHistory = JSON.parse(localStorage.getItem("foodHistory"));
 			if (foodHistory == null || foodHistory.length <= 1) {
@@ -94,7 +94,7 @@
 						foodName = "啥都没吃";
 				}
 				liStr = "您 "+dateBefore.toString()+" 天前的选择是：\n";
-				liStr += "食堂："+cateenName+"，食物："+foodName;
+				liStr += "食堂："+cateenName+"；食物："+foodName;
 				li[historyLength-i-1] = document.createElement("li");
 				li[historyLength-i-1].appendChild(document.createTextNode(liStr));
 				li[historyLength-i-1].setAttribute("id","foodHistory"+(historyLength-i-1).toString());
@@ -107,11 +107,11 @@
 				else if (i == 1) {
 					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-warning");
 				}
-				else if (i % 2 == 0) {
-					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-light");
-				}
+				// else if (i % 2 == 0) {
+				// 	li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-light");
+				// }
 				else {
-					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-dark");
+					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-secondary");
 				}
 				ul.appendChild(li[historyLength-i-1]);
 			}

@@ -33,6 +33,10 @@
 	</main>
 
   <script type ="text/javascript">
+			function sortS(a, b) {
+				return b[0] - a[0];
+			}
+
 			function btnPredict() {
 				var hasSelectedBtn = false;
 				for (var i = 0; i < 4; i++) {
@@ -49,11 +53,13 @@
 			}
 
 			function predict(fn) {
+				var resultS = new Array();
+				var sortResultS = new Array();
 				var coefficientX = [[3,3,2,3,2],[3,8,3,2,2],[1.7,1.7,2.3,2,2.3],[1.7,1.7,2,1,2]]
 				var coefficientL = [5.5,6,4.5,7.2,7.5,10.3,8.1]
 				var coefficientT = [6,3,4,8,3]
 				var coefficientS = [[8,5,8,9,6,8,6],[9,8,9,4,4,8,6],[4,6,8,8,7,0,3],[9,4,7,7,7,0,0],[9,7,2,0,4,7,6]]
-				var value = [["4~10","4~10","6~15","3~8","6~15","10~20","15"],
+				var coefficientValue = [["4~10","4~10","6~15","3~8","6~15","10~20","15"],
 										["2~20","8~20","5~15","8","8~14","15~25","15"],
 										["2~9","2~11","1~6","2~8","1~7","0","15"],
 										["8~35","10~35","12~28","10~35","12~40","0","0"],
@@ -66,39 +72,69 @@
 					foodHistory[1] = [-1,-1];
 					localStorage.setItem("foodHistory", JSON.stringify(foodHistory));
 				}
-				var beforeL, beforeT, beforeS;
+				var beforeL, beforeT, beforeS, Xf;
 				switch (fn) {
 					case 0:
 						beforeL = 1.5;
 						beforeT = 1.5;
 						beforeS = 1.0;
+						Xf = coefficientX[0];
 						break;
 					case 1:
 						beforeL = 1.5;
 						beforeT = 1.0;
 						beforeS = 1.0;
+						Xf = coefficientX[1];
 						break;
 					case 2:
 						beforeL = 0.5;
 						beforeT = 0.5;
 						beforeS = 2.0;
+						Xf = coefficientX[2];
 						break;
 					case 3:
 						beforeL = 1.5;
 						beforeT = 1.5;
 						beforeS = 0.5;
+						Xf = coefficientX[3];
 						break;
 					default:
 						beforeL = 1.0;
 						beforeT = 1.0;
 						beforeS = 1.0;
 				}
-				for (var j = 0; i < 7; j++) {
-					for (var i = 0; i < 5; i++) {
 
+				// 7个食堂
+				for (var j = 0; j < 7; j++) {
+					// 5种食物
+					for (var i = 0; i < 5; i++) {
+						// 原始满意度
+						var Si0k = coefficientS[i][j];
+						if (foodHistory[foodHistory.length-1][0]==j && foodHistory[foodHistory.length-1][1]==i) {
+							// 1天前吃过，S减为0
+							Si0k -= Si0k;
+						}
+						else if (foodHistory[foodHistory.length-2][0]==j && foodHistory[foodHistory.length-2][1]==i) {
+							// 2天前吃过，S减半
+							Si0k -= 0.5*Si0k;
+						}
+						resultS[j*5+i] = beforeS*Si0k*Xf[i] - beforeL*coefficientL[j] - beforeT*coefficientT[i]
 					}
 				}
 
+				for (var k = 0; k < resultS.length; k++) {
+					sortResultS[k] = [resultS[k],k]
+				}
+				sortResultS = sortResultS.sort(sortS);
+				// alert(sortResultS[0][0]+". canteen: "+(parseInt(sortResultS[0][1]/5)).toString()+". food: "+(sortResultS[0][1]%5).toString());
+				var tempResultS = new Array();
+				for (var k = 0; k < 3; k++) {
+					tempResultS[k] = sortResultS[k][1];
+				}
+				tempResultS[k] = fn;
+				localStorage.removeItem("tempResultS");
+				localStorage.setItem("tempResultS", JSON.stringify(tempResultS));
+				location.href="result.php"
 			}
 
       function btnSeletcted(btnGrp,btnNum){
