@@ -36,7 +36,7 @@
       var cateenName;
       var foodName;
       var tempResultS = JSON.parse(localStorage.getItem("tempResultS"));
-      alert(tempResultS);
+      // alert(tempResultS);
 
       if (tempResultS == null) {
         alert("您今天还没有预测过哦，先去预测吧！");
