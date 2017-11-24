@@ -58,7 +58,47 @@
 										["2~9","2~11","1~6","2~8","1~7","0","15"],
 										["8~35","10~35","12~28","10~35","12~40","0","0"],
 										["2~10","2~10","5","0","3~6","3~9","15"]]
-				// alert(value[fn]);
+
+				var history = JSON.parse(localStorage.getItem("history"));
+				if(history == null || history.length <= 1) {
+					history = new Array();
+					history[0] = [-1,-1];
+					history[1] = [-1,-1];
+					localStorage.setItem("history", JSON.stringify(history));
+				}
+				var beforeL, beforeT, beforeS;
+				switch (fn) {
+					case 0:
+						beforeL = 1.5;
+						beforeT = 1.5;
+						beforeS = 1.0;
+						break;
+					case 1:
+						beforeL = 1.5;
+						beforeT = 1.0;
+						beforeS = 1.0;
+						break;
+					case 2:
+						beforeL = 0.5;
+						beforeT = 0.5;
+						beforeS = 2.0;
+						break;
+					case 3:
+						beforeL = 1.5;
+						beforeT = 1.5;
+						beforeS = 0.5;
+						break;
+					default:
+						beforeL = 1.0;
+						beforeT = 1.0;
+						beforeS = 1.0;
+				}
+				for(var i = 0; i < 5; i++) {
+					for(var j = 0; j < 7; j++) {
+
+					}
+				}
+
 			}
 
       function btnSeletcted(btnGrp,btnNum){
