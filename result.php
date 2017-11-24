@@ -79,6 +79,8 @@
         case 6:
           cateenName = "芝兰";
           break;
+				case 7:
+					cateenName = "SPTime!";
         default:
           // cateenName = "哪都没去";
       }
@@ -101,6 +103,7 @@
         default:
           // foodName = "啥都没吃";
       }
+
       document.getElementById("selectedCateen").innerHTML = cateenName;
       document.getElementById("selectedFood").innerHTML = foodName;
     }
@@ -128,6 +131,7 @@
       var foodHistory = JSON.parse(localStorage.getItem("foodHistory"));
       foodHistory.push([parseInt(tempResultS[0]/5),tempResultS[0]%5]);
       localStorage.setItem("foodHistory", JSON.stringify(foodHistory));
+			localStorage.removeItem("tempResultS");
       location.href="history.php"
     }
 

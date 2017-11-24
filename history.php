@@ -31,6 +31,14 @@
 			location.reload();
 		}
 
+		function getSpFood(num) {
+			var spChoice = [["海底捞","唇辣号","苏轼酒楼","蟹肉煲","水晶烤肉"],
+        ["汤城小厨","云海肴","素虎","外婆家","桃屋"],
+        ["局气","南京大牌档","wuli花甲","西门烤翅","将太无二"],
+        ["虽然不得不吃点东西，但是既然什么都拒绝了，那就干脆不吃了吧！","坚持饿到下课去吃夜宵吧！","要不然再看一遍吃什么吧_(:з」∠)_","干脆点，不吃了！减肥！","买点水果凑合凑合吧(ー`´ー)	"]];
+			return spChoice[parseInt(num/5)][num%5];
+		}
+
 		function fillList() {
 			var foodHistory = JSON.parse(localStorage.getItem("foodHistory"));
 			if (foodHistory == null || foodHistory.length <= 1) {
@@ -50,6 +58,9 @@
 				var cateenName;
 				var foodName;
 				switch (foodHistory[historyLength-i-1][0]) {
+					case -1:
+						cateenName = "哪都没去";
+						break;
 					case 0:
 						cateenName = "紫荆";
 						break;
@@ -71,10 +82,15 @@
 					case 6:
 						cateenName = "芝兰";
 						break;
+					case 7:
+						cateenName = "SPTime!";
 					default:
-						cateenName = "哪都没去";
+						// cateenName = "哪都没去";
 				}
 				switch (foodHistory[historyLength-i-1][1]) {
+					case -1:
+						foodName = "啥都没吃";
+						break;
 					case 0:
 						foodName = "汤食";
 						break;
@@ -91,7 +107,7 @@
 						foodName = "甜点";
 						break;
 					default:
-						foodName = "啥都没吃";
+						foodName = getSpFood(foodHistory[historyLength-i-1][1]-35);
 				}
 				liStr = "您 "+dateBefore.toString()+" 天前的选择是：\n";
 				liStr += "食堂："+cateenName+"；食物："+foodName;
