@@ -25,24 +25,25 @@
 
 	<script type ="text/javascript">
 		function fillList() {
-			var history = JSON.parse(localStorage.getItem("history"));
-			if(history == null || history.length <= 1) {
-				history = new Array();
-				history[0] = [-1,-1];
-				history[1] = [-1,-1];
-				localStorage.setItem("history", JSON.stringify(history));
+			var foodHistory = JSON.parse(localStorage.getItem("foodHistory"));
+			if (foodHistory == null || foodHistory.length <= 1) {
+				foodHistory = new Array();
+				foodHistory[0] = [-1,-1];
+				foodHistory[1] = [-1,-1];
+				localStorage.setItem("foodHistory", JSON.stringify(foodHistory));
 			}
 
 			var ul = document.getElementById("list");
 			var li = new Array();
-			var historyLength = history.length;
-			for(var i = historyLength-1; i >= 0; i--) { // 最后这里要改成2
-				var dateBefore = historyLength-i;
+			var historyLength = foodHistory.length;
+			for (var i = 0; i < historyLength; i++) { // 最后这里要改成historyLentgh-2
+				alert(i);
+				var dateBefore = i+1;
 				var liStr;
 				var liStrLast;
 				var cateenName;
 				var foodName;
-				switch (history[historyLength-i-1][0]) {
+				switch (foodHistory[historyLength-i-1][0]) {
 					case 0:
 						cateenName = "紫荆";
 						break;
@@ -67,7 +68,7 @@
 					default:
 						cateenName = "哪都没去";
 				}
-				switch (history[historyLength-i-1][1]) {
+				switch (foodHistory[historyLength-i-1][1]) {
 					case 0:
 						foodName = "汤食";
 						break;
@@ -90,8 +91,22 @@
 				liStr += "食堂："+cateenName+"，食物："+foodName;
 				li[historyLength-i-1] = document.createElement("li");
 				li[historyLength-i-1].appendChild(document.createTextNode(liStr));
-				li[historyLength-i-1].setAttribute("id","history"+(historyLength-i-1).toString());
-				li[historyLength-i-1].setAttribute("class", "list-group-item");
+				li[historyLength-i-1].setAttribute("id","foodHistory"+(historyLength-i-1).toString());
+				if(cateenName == "哪都没去" || foodName == "啥都没吃") {
+					li[historyLength-i-1].setAttribute("class", "list-group-item disabled");
+				}
+				else if ((historyLength-i-1) == 0) {
+					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-danger");
+				}
+				else if ((historyLength-i-1) == 1) {
+					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-warning");
+				}
+				else if ((historyLength-i-1) % 2 == 0) {
+					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-light");
+				}
+				else {
+					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-dark");
+				}
 				ul.appendChild(li[historyLength-i-1]);
 			}
 		}

@@ -35,20 +35,20 @@
   <script type ="text/javascript">
 			function btnPredict() {
 				var hasSelectedBtn = false;
-				for(var i = 0; i < 4; i++) {
+				for (var i = 0; i < 4; i++) {
 					var btnGrp = 0;
 					btnTestId="btnQ"+btnGrp+"A"+i;
-					if(document.getElementById(btnTestId).getAttribute("selected")=="true") {
+					if (document.getElementById(btnTestId).getAttribute("selected")=="true") {
 						predict(i);
 						hasSelectedBtn = true;
 					}
 				}
-				if(hasSelectedBtn == false) {
+				if (hasSelectedBtn == false) {
 					alert("请先选择一项~");
 				}
 			}
 
-			function predict(fn){
+			function predict(fn) {
 				var coefficientX = [[3,3,2,3,2],[3,8,3,2,2],[1.7,1.7,2.3,2,2.3],[1.7,1.7,2,1,2]]
 				var coefficientL = [5.5,6,4.5,7.2,7.5,10.3,8.1]
 				var coefficientT = [6,3,4,8,3]
@@ -59,12 +59,12 @@
 										["8~35","10~35","12~28","10~35","12~40","0","0"],
 										["2~10","2~10","5","0","3~6","3~9","15"]]
 
-				var history = JSON.parse(localStorage.getItem("history"));
-				if(history == null || history.length <= 1) {
-					history = new Array();
-					history[0] = [-1,-1];
-					history[1] = [-1,-1];
-					localStorage.setItem("history", JSON.stringify(history));
+				var foodHistory = JSON.parse(localStorage.getItem("foodHistory"));
+				if (foodHistory == null || foodHistory.length <= 1) {
+					foodHistory = new Array();
+					foodHistory[0] = [-1,-1];
+					foodHistory[1] = [-1,-1];
+					localStorage.setItem("foodHistory", JSON.stringify(foodHistory));
 				}
 				var beforeL, beforeT, beforeS;
 				switch (fn) {
@@ -93,8 +93,8 @@
 						beforeT = 1.0;
 						beforeS = 1.0;
 				}
-				for(var i = 0; i < 5; i++) {
-					for(var j = 0; j < 7; j++) {
+				for (var j = 0; i < 7; j++) {
+					for (var i = 0; i < 5; i++) {
 
 					}
 				}
