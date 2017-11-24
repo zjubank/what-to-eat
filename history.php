@@ -37,7 +37,6 @@
 			var li = new Array();
 			var historyLength = foodHistory.length;
 			for (var i = 0; i < historyLength; i++) { // 最后这里要改成historyLentgh-2
-				alert(i);
 				var dateBefore = i+1;
 				var liStr;
 				var liStrLast;
@@ -95,13 +94,13 @@
 				if(cateenName == "哪都没去" || foodName == "啥都没吃") {
 					li[historyLength-i-1].setAttribute("class", "list-group-item disabled");
 				}
-				else if ((historyLength-i-1) == 0) {
+				else if (i == 0) {
 					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-danger");
 				}
-				else if ((historyLength-i-1) == 1) {
+				else if (i == 1) {
 					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-warning");
 				}
-				else if ((historyLength-i-1) % 2 == 0) {
+				else if (i % 2 == 0) {
 					li[historyLength-i-1].setAttribute("class", "list-group-item list-group-item-light");
 				}
 				else {
