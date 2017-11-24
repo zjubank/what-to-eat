@@ -21,9 +21,16 @@
 		<ul class="list-group" id="list" style="white-space: pre-line">
 
 		</ul>
+		<br>
+		<button type="button" class="btn btn-primary" onclick="clearHistory()">清空历史记录</button>
 	</main>
 
 	<script type ="text/javascript">
+		function clearHistory() {
+			localStorage.clear();
+			location.reload();
+		}
+		
 		function fillList() {
 			var foodHistory = JSON.parse(localStorage.getItem("foodHistory"));
 			if (foodHistory == null || foodHistory.length <= 1) {
