@@ -43,7 +43,7 @@
         spXf = spChoice[tempResultS[0]];
         var randNum = parseInt(Math.random()*5,10)
         document.getElementById("selectedSP").innerHTML = spXf[randNum];
-        tempResultS[0] = tempResultS[0]*5 + randNum;
+        tempResultS[1] = tempResultS[0]*5 + randNum;
         localStorage.setItem("tempResultS", JSON.stringify(tempResultS));
       }
       else {
@@ -57,7 +57,7 @@
     function btnAccept() {
       var tempResultS = JSON.parse(localStorage.getItem("tempResultS"));
       var foodHistory = JSON.parse(localStorage.getItem("foodHistory"));
-      foodHistory.push([7,tempResultS[0]+35]);
+      foodHistory.push([7,tempResultS[1]+35]);
       localStorage.setItem("foodHistory", JSON.stringify(foodHistory));
 
       localStorage.removeItem("tempResultS");

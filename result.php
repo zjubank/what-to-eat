@@ -139,7 +139,12 @@
       var tempResultS = JSON.parse(localStorage.getItem("tempResultS"));
       tempResultS.splice(0,1);
       localStorage.setItem("tempResultS", JSON.stringify(tempResultS));
-      location.reload();
+			if(tempResultS.length>=2) {
+				location.reload();
+			}
+			else {
+				location.href="sptime.php"
+			}
     }
 
     function btnReturn() {
