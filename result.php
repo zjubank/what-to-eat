@@ -19,7 +19,10 @@
 
 	<main role="main" class="container">
     <div class="question">
-	    <h3>(*^▽^*)经过精密的计算，今天<a id="order"></a>适合吃的是<br/><a class="display-4" id="selectedCateen"></a>的<a class="display-4" id="selectedFood"></a>哦~(*·w·*)~</h3>
+	    <h3>(*^▽^*)经过精密的计算，今天<a id="order"></a>适合吃的是<br/>
+				<a class="display-4" id="selectedCateen"></a>的<a class="display-4" id="selectedFood"></a>哦~(*·w·*)~<br/>
+				预计价格为<a id="selectedValue"></a>元
+			</h3>
 	    <div class="btn-group-vertical">
 	      <button type="button" class="btn btn-outline-secondary" id="btnQ1A0" selected=false>A.愉快同意(o´ω`o)و</button>
 	      <button type="button" class="btn btn-outline-secondary" id="btnQ1A1" selected=false>B.残忍拒绝o(￣ヘ￣o＃)</button>
@@ -36,6 +39,11 @@
       var cateenName;
       var foodName;
       var tempResultS = JSON.parse(localStorage.getItem("tempResultS"));
+			var coefficientValue = [["4~10","4~10","6~15","3~8","6~15","10~20","15"],
+									["2~20","8~20","5~15","8","8~14","15~25","15"],
+									["2~9","2~11","1~6","2~8","1~7","0","15"],
+									["8~35","10~35","12~28","10~35","12~40","0","0"],
+									["2~10","2~10","5","0","3~6","3~9","15"]]
       // alert(tempResultS);
 
       if (tempResultS == null) {
@@ -106,6 +114,7 @@
 
       document.getElementById("selectedCateen").innerHTML = cateenName;
       document.getElementById("selectedFood").innerHTML = foodName;
+			document.getElementById("selectedValue").innerHTML = coefficientValue[tempResultS[0]%5][parseInt(tempResultS[0]/5)]
     }
     window.onload = fillResult;
 
