@@ -57,8 +57,8 @@
 				var sortResultS = new Array();
 				var coefficientX = [[3,3,2,3,2],[3,8,3,2,2],[1.7,1.7,2.3,2,2.3],[1.7,1.7,2,1,2]]
 				var coefficientL = [5.5,6,4.5,7.2,7.5,10.3,8.1]
-				var coefficientT = [6,3,4,8,3]
-				var coefficientS = [[8,5,8,9,6,8,6],[9,8,9,4,4,8,6],[4,6,8,8,7,0,3],[9,4,7,7,7,0,0],[9,7,2,0,4,7,6]]
+				var coefficientT = [6,3,4,5,3]
+				var coefficientS = [[8,5,8,9,8,8,6],[9,8,9,4,8,8,6],[4,6,8,8,9,0,3],[9,4,7,7,9,0,0],[9,7,2,0,4,9,6]]
 
 				var foodHistory = JSON.parse(localStorage.getItem("foodHistory"));
 				if (foodHistory == null || foodHistory.length <= 1) {
@@ -71,7 +71,7 @@
 				switch (fn) {
 					case 0:
 						beforeL = 1.5;
-						beforeT = 1.5;
+						beforeT = 1.0;
 						beforeS = 1.0;
 						Xf = coefficientX[0];
 						break;
@@ -88,15 +88,13 @@
 						Xf = coefficientX[2];
 						break;
 					case 3:
-						beforeL = 1.5;
-						beforeT = 1.5;
-						beforeS = 0.5;
+						beforeL = 0.5;
+						beforeT = 0.5;
+						beforeS = 1.0;
 						Xf = coefficientX[3];
 						break;
 					default:
-						beforeL = 1.0;
-						beforeT = 1.0;
-						beforeS = 1.0;
+						alert("好像出了什么问题，请重新试试吧~");
 				}
 
 				// 7个食堂
